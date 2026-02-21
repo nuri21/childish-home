@@ -327,9 +327,9 @@ export default function App() {
         </div>
 
         {/* ━━━━ 갤러리 ━━━━ */}
-        <div className="gallery-section">
+        <div className="gallery-section"> 
           <Window type="yellow-border" title="" showResize className="content-window">
-            <div style={{ padding: '10px 12px' }}>
+            <div style={{ padding: '10px 12px' }}> 
               <Gallery />
             </div>
           </Window>

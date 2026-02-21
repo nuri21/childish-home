@@ -8,7 +8,7 @@ export default function Window({ title, type = 'blue-title', showScrollbar = fal
           {/* 색칠된 원 3개 */}
           <div className="window-dot" style={{ background: '#ff7070', border: '1px solid #e05050' }} />
           <div className="window-dot" style={{ background: '#c8a0e8', border: '1px solid #a880c8' }} />
-          <div className="window-dot" style={{ background: '#c8a0e8', border: '1px solid #a880c8' }} />
+          <div className="window-dot" style={{ background: '#def79c', border: '1px solid #a880c8' }} />
         </div>
         {title && <span className="window-title-text">{title}</span>}
         {showResize && <span className="window-resize-icon">↗</span>}
