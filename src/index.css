@@ -1,13 +1,80 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Paperozi';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-1Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'YeogiOttaeJalnan';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+  font-weight: normal;
+  font-display: swap;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --bg: #ddd6f8;
+  --purple: #7b6ab0;
+  --purple-light: #b8a8d8;
+  --purple-pale: #ede8f8;
+  --mint: #8ecfc4;
+  --yellow: #e8d84a;
+  --blue-title: #b8d8f0;
+  --white: #ffffff;
+  --text-dark: #3a2a5a;
+  --text-mid: #5a4a7a;
+  --text-light: #9888c0;
+  --border-purple: #c0a8e8;
+  --border-yellow: #c8b800;
+  --border-blue: #90b8d8;
 }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: var(--bg);
+  font-family: 'Paperozi', 'Noto Sans KR', sans-serif;
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+/* 윈도우 공통 */
+.window { background: #fff; position: relative; }
+
+.window.blue-title { border: 1.5px solid var(--border-blue); border-radius: 3px; }
+.window.blue-title .window-titlebar { background: #b8d8f0; padding: 5px 8px; display: flex; align-items: center; gap: 8px; }
+
+.window.lavender-title { border: 1.5px solid var(--border-purple); border-radius: 3px; }
+.window.lavender-title .window-titlebar { background: #c8c0e8; padding: 5px 8px; display: flex; align-items: center; justify-content: space-between; }
+
+.window.yellow-title { border: 1.5px solid var(--border-yellow); border-radius: 3px; }
+.window.yellow-title .window-titlebar { background: var(--yellow); padding: 5px 8px; display: flex; align-items: center; gap: 8px; }
+
+.window.yellow-border { border: 1.5px solid #8060a0; border-radius: 3px; background: #fffff8; }
+.window.yellow-border .window-titlebar { background: var(--yellow); padding: 5px 8px; display: flex; align-items: center; justify-content: space-between; }
+
+.window-dots { display: flex; gap: 4px; align-items: center; }
+.window-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(100,80,160,0.25); background: transparent; }
+.window-title-text { font-size: 10px; color: var(--text-dark); font-family: 'Paperozi', sans-serif; letter-spacing: 0.5px; }
+.window-resize-icon { font-size: 10px; color: var(--text-dark); opacity: 0.5; margin-left: auto; }
+
+.window-with-scrollbar { display: flex; }
+.window-scrollbar { width: 14px; background: #ede8f8; border-left: 1px solid var(--border-purple); display: flex; flex-direction: column; align-items: center; }
+.scrollbar-arrow { width: 14px; height: 14px; background: #c8b8e8; display: flex; align-items: center; justify-content: center; font-size: 7px; color: white; border: 1px solid var(--border-purple); cursor: pointer; }
+.scrollbar-track { flex: 1; width: 100%; background: #9880c8; opacity: 0.6; }
+
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+@keyframes twinkle { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.75)} }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+@keyframes pulse { 0%,100%{opacity:0.8} 50%{opacity:0.4} }
+
+.btn-ok {
+  background: linear-gradient(135deg, #9880c8, #b8a8d8);
+  color: white; border: none; border-radius: 12px;
+  padding: 5px 20px; font-size: 11px;
+  font-family: 'Paperozi', sans-serif;
+  cursor: pointer; letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(120,90,180,0.3);
+  transition: all 0.15s;
+}
+.btn-ok:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(120,90,180,0.4); }
+.btn-ok:active { transform: translateY(1px); }
