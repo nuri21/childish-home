@@ -3,11 +3,12 @@ import Window from './components/Window';
 import Gallery from './components/Gallery';
 import './App.css';
 
-/* ── 로딩바 ── */
+/* ── 픽셀 로딩바 (칸칸이, 계속 반복) ── */
 function LoadingBar() {
-  const [w, setW] = useState(0);
+  const [step, setStep] = useState(0);
+  const TOTAL = 20;
   useEffect(() => {
-    const t = setInterval(() => setW(p => { if (p >= 100) { clearInterval(t); return 100; } return p + 1.2; }), 40);
+    const t = setInterval(() => setStep(p => (p + 1) % (TOTAL + 1)), 120);
     return () => clearInterval(t);
   }, []);
   return (
@@ -15,8 +16,20 @@ function LoadingBar() {
       <div className="loading-text">LOADING...</div>
       <Window type="yellow-title" title="">
         <div style={{ padding: '5px 7px' }}>
-          <div style={{ height: 13, background: '#f0ecc0', border: '1px solid #c0a800', borderRadius: 2, overflow: 'hidden' }}>
-            <div style={{ height: '100%', width: `${w}%`, background: 'linear-gradient(90deg, #b890e8, #d4b0ff)', transition: 'width 0.04s linear', borderRadius: 2 }} />
+          <div style={{
+            display: 'flex', gap: 2,
+            background: '#f0ecc0', border: '1.5px solid #9880c8',
+            borderRadius: 3, padding: '3px 4px',
+          }}>
+            {Array.from({ length: TOTAL }).map((_, i) => (
+              <div key={i} style={{
+                flex: 1, height: 14, borderRadius: 2,
+                background: i < step
+                  ? (i < TOTAL / 2 ? '#a0d8f0' : '#9880c8')
+                  : 'rgba(180,160,220,0.15)',
+                transition: 'background 0.05s',
+              }} />
+            ))}
           </div>
         </div>
       </Window>
@@ -103,13 +116,9 @@ function SmileFlower() {
 function RoundBubble({ color = 'white', shadow = '#c8b8e8', children }) {
   return (
     <div style={{
-      background: color,
-      borderRadius: 50,
-      padding: '13px 22px',
-      fontSize: 12,
-      lineHeight: 1.8,
-      color: '#3a2a5a',
-      fontFamily: "'Paperozi', sans-serif",
+      background: color, borderRadius: 50,
+      padding: '13px 22px', fontSize: 12, lineHeight: 1.8,
+      color: '#3a2a5a', fontFamily: "'Paperozi', sans-serif",
       boxShadow: `3px 4px 0 ${shadow}`,
       border: '1px solid rgba(180,160,220,0.2)',
     }}>
@@ -118,25 +127,25 @@ function RoundBubble({ color = 'white', shadow = '#c8b8e8', children }) {
   );
 }
 
-/* ── 원형 프로필 placeholder ── */
-function ProfileCircle({ size = 76 }) {
+/* ── 원형 프로필 ── */
+function ProfileCircle({ size = 76, src }) {
   return (
     <div style={{
       width: size, height: size, borderRadius: '50%',
       background: 'linear-gradient(135deg, #e0d8f8, #c8e8f0)',
       border: '2px solid #c0a8e8',
-      display: 'flex', flexDirection: 'column',
-      alignItems: 'center', justifyContent: 'center',
-      flexShrink: 0, fontSize: 10, color: '#a090c8',
-      fontFamily: "'Paperozi', sans-serif",
-      overflow: 'hidden',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      flexShrink: 0, overflow: 'hidden',
     }}>
-      <span style={{ fontSize: size * 0.38 }}>🧑</span>
+      {src
+        ? <img src={src} alt="프로필" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        : <span style={{ fontSize: size * 0.38 }}>🧑</span>
+      }
     </div>
   );
 }
 
-/* ── 홀로그램 하트 스티커 (작은) ── */
+/* ── 홀로그램 하트 스티커 ── */
 function HoloHeartSticker() {
   return (
     <svg viewBox="0 0 80 65" width="72" height="58">
@@ -185,7 +194,7 @@ export default function App() {
                   letterSpacing: 2, lineHeight: 1.2, marginBottom: 10,
                 }}>차일디시</h1>
                 <p style={{ fontSize: 11, color: '#9888c0', fontFamily: "'Paperozi', sans-serif", lineHeight: 1.8 }}>
-                  놀 때 만들은 어린아이처럼 즐겁게 놀자
+                  놀 때 만큼은 어린아이처럼 즐겁게 놀자
                 </p>
               </div>
               <div className="three-hearts">
@@ -196,9 +205,7 @@ export default function App() {
               <div style={{ padding: '4px 16px 8px', fontSize: 12, lineHeight: 2.1, fontFamily: "'Paperozi', sans-serif", color: '#3a2a5a' }}>
                 <p>차일디시는 자유로운 길드입니다.</p>
                 <p>서로 예의를 잘 지켜주시는 분이라면</p>
-                <p>
-                  <strong>수다/ 사냥 / 의장 / 석상/ 솔플 유저 누구든 OK</strong>
-                </p>
+                <p><strong>수다/ 사냥 / 의장 / 석상/ 솔플 유저 누구든 OK</strong></p>
                 <p style={{ fontSize: 11, color: '#a090b8', marginTop: 2 }}>카카오 오픈채팅 / 길드 디스코드 운영중 참여 자유</p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', padding: '8px 14px 16px' }}>
@@ -206,10 +213,10 @@ export default function App() {
               </div>
             </Window>
           </div>
+
           <SmileFlower />
           <div className="hourglass-wrap">⏳</div>
-          <div className="bottom-scrollbar">
-          </div>
+          <div style={{ height: 32 }} />
         </div>
 
         {/* ━━━━ ABOUT CHILDISH ━━━━ */}
@@ -222,57 +229,58 @@ export default function App() {
                 <span style={{ fontSize: 22 }}>💛</span>
               </div>
 
-              {/* 말풍선 1: 텍스트 왼쪽 + 프로필 오른쪽 */}
+              {/* 말풍선 1 */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
                 <div style={{ flex: 1 }}>
                   <RoundBubble color="white" shadow="#c8b8e8">
                     나이? 성별? 중요하지 않아요!<br />
-                    텃새란 최대한 차일디시는 <strong>모두 친구입니다</strong>.
+                    매너만 지켜준다면 <strong>모두 친구입니다</strong>.
                   </RoundBubble>
                 </div>
-                <ProfileCircle size={76} />
+                <ProfileCircle size={76} src="/img/profile-01.png" />
               </div>
 
-              {/* 말풍선 2: 프로필 왼쪽 + 텍스트 오른쪽 */}
+              {/* 말풍선 2 */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
-                <ProfileCircle size={76} />
+                <ProfileCircle size={76} src="/img/profile-02.png" />
                 <div style={{ flex: 1 }}>
                   <RoundBubble color="#d8f0ec" shadow="#a0c8c0">
                     게임하다가 막히고 잘 모르신다구요?<br />
-                    어려워하지말고 <strong> 언제든지 물어보세요! 🌟 </strong>
+                    어려워하지말고 <strong>언제든지 물어보세요! 🌟</strong>
                   </RoundBubble>
                 </div>
               </div>
 
-              {/* 말풍선 3: 텍스트 왼쪽 + 프로필 오른쪽 */}
+              {/* 말풍선 3 */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
                 <div style={{ flex: 1 }}>
                   <RoundBubble color="#fef9c3" shadow="#d4c860">
-                    <strong>현생우선 길드입니다.<br /></strong>
+                    <strong>현생우선 길드입니다.</strong><br />
                     중요한 업무로 장기간 비접속에 두려워하지마세요!
                   </RoundBubble>
                 </div>
-                <ProfileCircle size={76} />
+                <ProfileCircle size={76} src="/img/profile-03.png" />
               </div>
 
-              {/* 파란 메모 윈도우 */}
+              {/* 파란 메모 윈도우 + 캐릭터 */}
               <div className="memo-char-wrap">
                 <Window type="blue-title" title="" showResize>
-                  <div style={{ padding: '16px 16px 8px' }}>
-                   <strong>커플, 앤캐 동반 가입 환영!</strong> 
+                  <div style={{ padding: '14px 16px 8px', fontFamily: "'Paperozi', sans-serif", color: '#3a2a5a' }}>
+                    <p style={{ fontSize: 13, fontWeight: 700, marginBottom: 8 }}>커플, 앤캐 동반 가입 환영!</p>
+                    <p style={{ fontSize: 10, lineHeight: 1.9, color: '#5a4a7a' }}>
+                      관계 진행에 따른 개인적인 일은 두분이서 조용히,<br />
+                      원만히 해결해주신다면 터치하지 않아요!
+                    </p>
                   </div>
-                    관계 진행에 따른 개인적인 일은 두분이서 조용히, 원만히 해결해주신다면 터치하지 않아요! 
-                  <div style={{ display: 'flex', justifyContent: 'center', padding: '0 14px 14px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'center', padding: '6px 14px 14px' }}>
                     <button className="btn-ok">OK</button>
                   </div>
                 </Window>
 
-                {/* 홀로그램 하트 스티커 - 왼쪽 하단 */}
                 <div className="holo-heart-sticker">
                   <HoloHeartSticker />
                 </div>
 
-                {/* 전신 캐릭터 2개 - 오른쪽, 창 아래로 삐져나옴 */}
                 <div className="char-full-pair">
                   <div className="char-full-single">
                     <span style={{ fontSize: 38 }}>🧍</span>
@@ -292,14 +300,14 @@ export default function App() {
         {/* ━━━━ 진입 안내 ━━━━ */}
         <div className="content-section">
           <Window type="yellow-border" title="" showResize className="content-window">
-            <div style={{ padding: '16px 14px 8px', fontSize: 12, lineHeight: 2.1, fontFamily: "'Paperozi', sans-serif", color: '#3a2a5a' }}>
-              <p style={{ fontWeight: 700, color: '#7b6ab0', marginBottom: 4 }}>지인플 터치 안해요🥰</p>
-              <p>매일 다른 채널에 있어도 괜찮아요!</p>
-              <p>가끔 석상하러 길터에 찾아와주시기만 해도 괜찮아요.</p>
-              <div style={{ marginTop: 8, padding: '8px 10px', background: 'rgba(200,230,240,0.3)', borderRadius: 4, border: '1px dashed #90b8c0', fontSize: 11 }}>
-                <p>서로 서로 무례하지 않고, 예의만 잘 지킨다면 문제 없어요. <br />
-                  다만, 외부 일은 개인적으로 해결하기! <br />
-                  터치를 안 한다는건 도와드릴 수도 없다는 뜻이에요. </p>
+            <div style={{ padding: '16px 14px 8px', fontFamily: "'Paperozi', sans-serif", color: '#3a2a5a' }}>
+              <p style={{ fontSize: 13, fontWeight: 700, color: '#7b6ab0', marginBottom: 8 }}>지인플 터치 안해요🥰</p>
+              <p style={{ fontSize: 10, lineHeight: 2 }}>매일 다른 채널에 있어도 괜찮아요!</p>
+              <p style={{ fontSize: 10, lineHeight: 2 }}>가끔 석상하러 길터에 찾아와주시기만 해도 괜찮아요.</p>
+              <div style={{ marginTop: 8, padding: '8px 12px', background: 'rgba(200,230,240,0.3)', borderRadius: 4, border: '1px dashed #90b8c0', fontSize: 10, lineHeight: 2 }}>
+                <p>서로 서로 무례하지 않고, 예의만 잘 지킨다면 문제 없어요.</p>
+                <p>다만, 외부 일은 개인적으로 해결하기!</p>
+                <p>터치를 안 한다는건 도와드릴 수도 없다는 뜻이에요.</p>
               </div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', padding: '8px 14px 14px' }}>
@@ -326,9 +334,7 @@ export default function App() {
             <span style={{ fontSize: 20, display: 'inline-block', animation: 'float 4s ease-in-out infinite 0.5s' }}>🌼</span>
             <span style={{ fontSize: 12, color: '#8ecfc4', display: 'inline-block', animation: 'twinkle 2s ease-in-out infinite 0.8s' }}>✦</span>
           </div>
-          <p style={{ fontSize: 10, color: '#a090b8', fontFamily: "'Paperozi', sans-serif" }}>
-            © 차일디시
-          </p>
+          <p style={{ fontSize: 10, color: '#a090b8', fontFamily: "'Paperozi', sans-serif" }}>© 차일디시</p>
         </div>
 
       </div>
