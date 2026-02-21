@@ -335,6 +335,75 @@ export default function App() {
           </Window>
         </div>
 
+
+        {/* ━━━━ 길드원 소개 카드 ━━━━ */}
+        <div className="content-section">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 10, alignItems: 'stretch' }}>
+
+            {/* 길드마스터 */}
+            <Window type="lavender-title" title="길마" showResize>
+              <div style={{
+                display: 'flex', flexDirection: 'column', alignItems: 'center',
+                padding: '16px 10px 14px', minHeight: 200,
+              }}>
+                {/* 프로필 원 - 고정 76px */}
+                <div style={{
+                  width: 76, height: 76, borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #e0d8f8, #c8e8f0)',
+                  border: '2.5px solid #c0a8e8',
+                  overflow: 'hidden', flexShrink: 0,
+                }}>
+                  <img src="/img/profile-01.png" alt="길드마스터"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    onError={e => { e.target.style.display='none'; e.target.parentElement.innerHTML='<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:30px">🧑</div>'; }}
+                  />
+                </div>
+                {/* spacer: 부길마 프로필(56px)과 높이 맞추기 위해 아래 10px 패딩 */}
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 10 }}>
+                  <p style={{ fontSize: 9, color: '#9888c0', fontFamily: "'Paperozi', sans-serif" }}>오픈카톡 &amp; 인게임 문의</p>
+                  <p style={{ fontSize: 12, fontWeight: 700, color: '#3a2a5a', fontFamily: "'Paperozi', sans-serif" }}>
+                    <span style={{ marginRight: 3 }}>👑</span>평운
+                  </p>
+                  <button className="btn-ok" style={{ fontSize: 10, padding: '4px 14px', marginTop: 4 }}>OK</button>
+                </div>
+              </div>
+            </Window>
+
+            {/* 부길드마스터 */}
+            <Window type="yellow-border" title="부길마" showResize>
+              <div style={{
+                display: 'flex', flexDirection: 'column', alignItems: 'center',
+                padding: '16px 10px 14px', minHeight: 200,
+              }}>
+                {/* 프로필 원 2개 - 56px씩, 합산 높이 56px (길마 76px과 차이 있어서 위에 10px 여백) */}
+                <div style={{ display: 'flex', gap: 8, justifyContent: 'center', marginTop: 10 }}>
+                  {['/img/profile-02.png', '/img/profile-03.png'].map((src, i) => (
+                    <div key={i} style={{
+                      width: 56, height: 56, borderRadius: '50%',
+                      background: 'linear-gradient(135deg, #f8f0e0, #e8f0c8)',
+                      border: '2px solid #c8b060',
+                      overflow: 'hidden', flexShrink: 0,
+                    }}>
+                      <img src={src} alt={`부길드마스터${i+1}`}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        onError={e => { e.target.style.display='none'; e.target.parentElement.innerHTML='<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:22px">🧑</div>'; }}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 10 }}>
+                  <p style={{ fontSize: 9, color: '#9888c0', fontFamily: "'Paperozi', sans-serif" }}>인게임 문의</p>
+                  <p style={{ fontSize: 12, fontWeight: 700, color: '#3a2a5a', fontFamily: "'Paperozi', sans-serif" }}>
+                    <span style={{ marginRight: 3 }}>👑</span>서미 / 꼼님
+                  </p>
+                  <button className="btn-ok" style={{ fontSize: 10, padding: '4px 14px', marginTop: 4 }}>OK</button>
+                </div>
+              </div>
+            </Window>
+
+          </div>
+        </div>
+
         {/* ━━━━ 푸터 ━━━━ */}
         <div className="footer">
           <div style={{ display: 'flex', justifyContent: 'center', gap: 10, marginBottom: 8 }}>

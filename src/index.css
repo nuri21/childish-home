@@ -33,11 +33,9 @@
 body {
   background-color: var(--bg);
   font-family: 'Paperozi', 'Noto Sans KR', sans-serif;
-  font-weight: 500; /* 기본 굵기 - 보통 */
   color: var(--text-dark);
   min-height: 100vh;
 }
-
 /* strong은 더 두껍게 */
 strong {
   font-weight: 800;
@@ -48,20 +46,20 @@ strong {
 .window { background: #fff; position: relative; }
 
 .window.blue-title { border: 1.5px solid var(--border-blue); border-radius: 3px; }
-.window.blue-title .window-titlebar { background: #b8d8f0; padding: 5px 8px; display: flex; align-items: center; gap: 8px; }
+.window.blue-title .window-titlebar { background: #b8d8f0; padding: 5px 8px; display: flex; align-items: center; gap: 16px; }
 
 .window.lavender-title { border: 1.5px solid var(--border-purple); border-radius: 3px; }
-.window.lavender-title .window-titlebar { background: #c8c0e8; padding: 5px 8px; display: flex; align-items: center; justify-content: space-between; }
+.window.lavender-title .window-titlebar { background: #c8c0e8; padding: 5px 8px; display: flex; align-items: center; gap: 16px; justify-content: flex-start; }
 
 .window.yellow-title { border: 1.5px solid var(--border-yellow); border-radius: 3px; }
-.window.yellow-title .window-titlebar { background: var(--yellow); padding: 5px 8px; display: flex; align-items: center; gap: 8px; }
+.window.yellow-title .window-titlebar { background: var(--yellow); padding: 5px 8px; display: flex; align-items: center; gap: 16px; }
 
 .window.yellow-border { border: 1.5px solid #8060a0; border-radius: 3px; background: #fffff8; }
-.window.yellow-border .window-titlebar { background: var(--yellow); padding: 5px 8px; display: flex; align-items: center; justify-content: space-between; }
+.window.yellow-border .window-titlebar { background: var(--yellow); padding: 5px 8px; display: flex; align-items: center; gap: 16px; justify-content: flex-start; }
 
 .window-dots { display: flex; gap: 4px; align-items: center; }
-.window-dot { width: 10px; height: 10px; border-radius: 50%; }
-.window-title-text { font-size: 10px; color: var(--text-dark); font-family: 'Paperozi', sans-serif; font-weight: 500; letter-spacing: 0.5px; }
+.window-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(100,80,160,0.25); background: transparent; }
+.window-title-text { font-size: 10px; color: var(--text-dark); font-family: 'Paperozi', sans-serif; letter-spacing: 0.5px; }
 .window-resize-icon { font-size: 10px; color: var(--text-dark); opacity: 0.5; margin-left: auto; }
 
 .window-with-scrollbar { display: flex; }
@@ -79,7 +77,6 @@ strong {
   color: white; border: none; border-radius: 12px;
   padding: 5px 20px; font-size: 11px;
   font-family: 'Paperozi', sans-serif;
-  font-weight: 500;
   cursor: pointer; letter-spacing: 0.5px;
   box-shadow: 0 2px 6px rgba(120,90,180,0.3);
   transition: all 0.15s;
