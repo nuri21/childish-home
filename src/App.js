@@ -268,8 +268,9 @@ export default function App() {
                   <div style={{ padding: '14px 16px 8px', fontFamily: "'Paperozi', sans-serif", color: '#3a2a5a' }}>
                     <p style={{ fontSize: 14, fontWeight: 700, marginBottom: 8 }}>커플, 앤캐 동반 가입 환영!</p>
                     <p style={{ fontSize: 11, lineHeight: 1.9, color: '#3a2a5a'}}>
-                      관계 진행에 따른 개인적인 일은 두분이서 조용히,<br />
-                      원만히 해결해주신다면 터치하지 않아요!
+                      관계 진행에 따른 개인적인 일은 <br /> 
+                      두분이서 조용히, 원만히 해결해주신다면 
+                      <br /> 터치하지 않아요!
                     </p>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'center', padding: '6px 14px 14px' }}>
@@ -281,16 +282,25 @@ export default function App() {
                   <HoloHeartSticker />
                 </div>
 
-                <div className="char-full-pair">
-                  <div className="char-full-single">
-                    <span style={{ fontSize: 38 }}>🧍</span>
-                    <span>캐릭터1</span>
-                  </div>
-                  <div className="char-full-single">
-                    <span style={{ fontSize: 38 }}>🧍‍♀️</span>
-                    <span>캐릭터2</span>
-                  </div>
+              <div className="char-full-pair">
+                {/* 캐릭터 1 (남캐) */}
+                <div className="char-full-single">
+                  <img 
+                    src="/img/char-01.png" 
+                    alt="캐릭터1" 
+                    style={{ width: '120px' }} // 크기는 여기서 직접 미세조정 가능해요!
+                  />
                 </div>
+
+                {/* 캐릭터 2 (여캐) */}
+                <div className="char-full-single">
+                  <img 
+                    src="/img/char-02.png" 
+                    alt="캐릭터2" 
+                    style={{ width: '100px', marginLeft: '-20px' }} // 살짝 겹치게 하려면 마이너스 마진
+                  />
+                </div>
+              </div>
               </div>
 
             </div>
