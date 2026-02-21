@@ -2,31 +2,16 @@
   background: #ddd6f8;
   min-height: 100vh;
   position: relative;
-  overflow-x: hidden;
+  /* overflow-x 제거 - 절대위치 요소 잘리는 원인 */
 }
 
 .page {
   max-width: 440px;
   margin: 0 auto;
-  padding: 0 0 60px;
+  padding: 0 0 80px;
   position: relative;
+  overflow: hidden; /* 페이지 단위로만 overflow 제어 */
 }
-
-/* ─── 배경 하트 동심원 패턴 ─── */
-.bg-hearts {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-.bg-heart-group {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.bg-heart-group.top { top: 5%; }
-.bg-heart-group.bottom { top: 52%; }
 
 /* ─── HERO 섹션 ─── */
 .hero-section {
@@ -34,13 +19,13 @@
   padding: 18px 14px 0;
   position: relative;
   z-index: 1;
+  min-height: 200px;
 }
 
 /* 홀로그램 하트 */
 .holo-heart-wrap {
   position: absolute;
-  top: 12px;
-  left: 8px;
+  top: 12px; left: 8px;
   z-index: 5;
   animation: float 4s ease-in-out infinite;
   width: 130px;
@@ -61,13 +46,12 @@
   white-space: nowrap;
 }
 .oval-label .label-main { font-size: 10px; color: #e0d8f8; font-family: 'Paperozi', sans-serif; letter-spacing: 1px; font-weight: 600; }
-.oval-label .label-sub  { font-size: 8px;  color: #a898c8; font-family: 'Paperozi', sans-serif; }
+.oval-label .label-sub  { font-size: 8px; color: #a898c8; font-family: 'Paperozi', sans-serif; }
 
-/* LOADING 영역 */
+/* LOADING */
 .loading-area {
   position: absolute;
-  top: 10px;
-  right: 8px;
+  top: 10px; right: 8px;
   z-index: 5;
   width: 150px;
 }
@@ -86,7 +70,7 @@
   z-index: 2;
 }
 
-/* 하트 3개 row */
+/* 하트 3개 */
 .three-hearts {
   display: flex;
   justify-content: center;
@@ -94,13 +78,11 @@
   padding: 16px 0 10px;
 }
 
-/* 픽셀 패턴 (체커보드) */
+/* 픽셀 패턴 */
 .pixel-deco {
   position: absolute;
-  bottom: 0px;
-  left: 8px;
-  width: 100px;
-  height: 54px;
+  bottom: 18px; left: 8px;
+  width: 100px; height: 54px;
   background-image: repeating-conic-gradient(#aaa8c8 0% 25%, transparent 0% 50%);
   background-size: 8px 8px;
   opacity: 0.5;
@@ -110,8 +92,7 @@
 /* 스마일 꽃 */
 .smile-flower-wrap {
   position: absolute;
-  bottom: -20px;
-  right: 6px;
+  bottom: 0px; right: 6px;
   z-index: 6;
   animation: float 3.5s ease-in-out infinite;
 }
@@ -119,8 +100,7 @@
 /* 모래시계 */
 .hourglass-wrap {
   position: absolute;
-  bottom: 30px;
-  right: 90px;
+  bottom: 36px; right: 88px;
   font-size: 24px;
   z-index: 4;
   animation: float 5s ease-in-out infinite 1.2s;
@@ -136,73 +116,100 @@
   align-items: center;
   padding: 0 4px;
   gap: 2px;
-  margin-top: 50px;
+  margin-top: 46px;
   position: relative;
   z-index: 2;
 }
 .scrollbar-h-arrow { width: 14px; height: 12px; background: #b0a0d8; border: 1px solid #8070b8; display: flex; align-items: center; justify-content: center; font-size: 7px; color: white; flex-shrink: 0; }
 .scrollbar-h-track { flex: 1; height: 8px; background: white; border: 1px solid #b0a0d0; border-radius: 1px; }
-.scrollbar-h-thumb { width: 38px; height: 100%; background: #b0a0d8; border-radius: 1px; }
+.scrollbar-h-thumb { width: 38px; height: 100%; background: #b0a0d8; }
 .scrollbar-h-btns { display: flex; gap: 1px; flex-shrink: 0; }
 .scrollbar-h-btn { width: 12px; height: 12px; background: #b0a0d8; border: 1px solid #8070b8; display: flex; align-items: center; justify-content: center; font-size: 6px; color: white; }
 
 /* ─── ABOUT 섹션 ─── */
-.about-section { position: relative; z-index: 1; }
-.about-window-inner { padding: 12px 14px 16px; }
-
-/* ─── 채팅 말풍선 ─── */
-.chat-bubble {
-  border-radius: 10px;
-  padding: 12px 14px;
-  font-size: 12px;
-  line-height: 1.9;
-  margin-bottom: 8px;
-  font-family: 'Paperozi', sans-serif;
+.about-section {
+  position: relative;
+  z-index: 1;
+  margin-top: 0;
 }
-.chat-bubble.left {
-  background: rgba(230, 225, 250, 0.7);
-  border: 1px solid rgba(180,165,230,0.5);
-  border-radius: 10px 10px 10px 3px;
-  color: var(--text-dark);
-}
-.chat-bubble.right {
-  background: rgba(195, 230, 225, 0.6);
-  border: 1px solid rgba(140,200,190,0.5);
-  border-radius: 10px 10px 3px 10px;
-  color: var(--text-dark);
-  text-align: right;
+.about-window-inner {
+  padding: 12px 14px 20px;
 }
 
-/* ─── 콘텐츠 섹션들 ─── */
-.content-section { padding: 10px 14px; position: relative; z-index: 1; }
-.content-window { margin-bottom: 10px; }
+/* 캐릭터 전신 영역 - absolute 대신 정상 흐름으로 */
+.char-full-area {
+  position: relative;
+  height: 160px;
+  margin: 0 -14px; /* 윈도우 content padding 상쇄해서 꽉 채우기 */
+  overflow: visible;
+}
 
-/* ─── 갤러리 ─── */
-.gallery-section { padding: 10px 14px; position: relative; z-index: 1; }
+.char-full-pair {
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  display: flex;
+  gap: 4px;
+  z-index: 10;
+}
 
-/* ─── 푸터 ─── */
-.footer { text-align: center; padding: 24px 0 16px; position: relative; z-index: 1; }
-
-/* ─── char placeholder ─── */
-.char-placeholder {
-  width: 100%;
-  background: linear-gradient(160deg, #ede8f8, #daf0ec);
+.char-full-single {
+  width: 75px;
+  height: 150px;
+  background: linear-gradient(180deg, #ede8f8, #daf0ec);
   border: 1.5px dashed #c0a8e8;
   border-radius: 6px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 6px; color: #a090c8; font-size: 10px; font-family: 'Paperozi', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #a090c8;
+  font-family: 'Paperozi', sans-serif;
 }
 
+.holo-heart-sticker {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 5;
+}
+
+/* 메모 윈도우 + 캐릭터 래퍼 */
+.memo-char-wrap {
+  position: relative;
+  /* 아래 캐릭터가 삐져나올 공간 */
+  padding-bottom: 100px;
+  margin-bottom: 16px;
+}
+
+/* ─── 섹션 공통 ─── */
+.content-section {
+  padding: 12px 14px;
+  position: relative;
+  z-index: 1;
+}
+.content-window { margin-bottom: 12px; }
+
+/* ─── 갤러리 ─── */
+.gallery-section {
+  padding: 12px 14px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── 푸터 ─── */
+.footer {
+  text-align: center;
+  padding: 28px 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── 공통 ─── */
 .tag-ok {
   display: inline-block;
   background: linear-gradient(135deg, #9880c8, #c0a8e8);
   color: white; font-size: 10px; border-radius: 10px;
   padding: 2px 10px; vertical-align: middle; margin-left: 4px;
-}
-
-.section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #c0a8e8 30%, #c0a8e8 70%, transparent);
-  margin: 6px 14px;
-  opacity: 0.4;
 }
