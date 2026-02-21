@@ -206,7 +206,7 @@ export default function App() {
                 <p>차일디시는 자유로운 길드입니다.</p>
                 <p>서로 예의를 잘 지켜주시는 분이라면</p>
                 <p><strong>수다/ 사냥 / 의장 / 석상/ 솔플 유저 누구든 OK</strong></p>
-                <p style={{ fontSize: 11, color: '#a090b8', marginTop: 2 }}>카카오 오픈채팅 / 길드 디스코드 운영중 참여 자유</p>
+                <p>카카오 오픈채팅 / 길드 디스코드 운영중 참여 자유</p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', padding: '8px 14px 16px' }}>
                 <button className="btn-ok">OK</button>
@@ -266,8 +266,8 @@ export default function App() {
               <div className="memo-char-wrap">
                 <Window type="blue-title" title="" showResize>
                   <div style={{ padding: '14px 16px 8px', fontFamily: "'Paperozi', sans-serif", color: '#3a2a5a' }}>
-                    <p style={{ fontSize: 13, fontWeight: 700, marginBottom: 8 }}>커플, 앤캐 동반 가입 환영!</p>
-                    <p style={{ fontSize: 10, lineHeight: 1.9, color: '#5a4a7a' }}>
+                    <p style={{ fontSize: 14, fontWeight: 700, marginBottom: 8 }}>커플, 앤캐 동반 가입 환영!</p>
+                    <p style={{ fontSize: 11, lineHeight: 1.9, color: '#3a2a5a'}}>
                       관계 진행에 따른 개인적인 일은 두분이서 조용히,<br />
                       원만히 해결해주신다면 터치하지 않아요!
                     </p>
@@ -301,7 +301,7 @@ export default function App() {
         <div className="content-section">
           <Window type="yellow-border" title="" showResize className="content-window">
             <div style={{ padding: '16px 14px 8px', fontFamily: "'Paperozi', sans-serif", color: '#3a2a5a' }}>
-              <p style={{ fontSize: 13, fontWeight: 700, color: '#7b6ab0', marginBottom: 8 }}>지인플 터치 안해요🥰</p>
+              <p style={{ fontSize: 13, fontWeight: 700, color: '#3a2a5a', marginBottom: 8 }}>지인플 터치 안해요🥰</p>
               <p style={{ fontSize: 10, lineHeight: 2 }}>매일 다른 채널에 있어도 괜찮아요!</p>
               <p style={{ fontSize: 10, lineHeight: 2 }}>가끔 석상하러 길터에 찾아와주시기만 해도 괜찮아요.</p>
               <div style={{ marginTop: 8, padding: '8px 12px', background: 'rgba(200,230,240,0.3)', borderRadius: 4, border: '1px dashed #90b8c0', fontSize: 10, lineHeight: 2 }}>

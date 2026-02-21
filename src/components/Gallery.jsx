@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Window from './Window';
 
-// src/img/ 폴더 기준 이미지 목록 - 나중에 실제 파일명으로 교체
-const IMGS = Array.from({ length: 6 }, (_, i) => ({
-  id: i + 1,
-  // 실제 이미지 경로: src/img/ 폴더에 넣은 파일명으로 교체하세요
-  src: `/img/screenshot-${i + 1}.png`,
-  caption: `스크린샷 ${i + 1}`,
-}));
+const IMGS = Array.from({ length: 6 }, (_, i) => {
+  const num = String(i + 1).padStart(2, '0'); 
+  return {
+    id: i + 1,
+    src: `/img/screenshot-${num}.png`,
+    caption: `스크린샷 ${i + 1}`,
+  };
+});
 
 // 폴더 아이콘 SVG
 function FolderIcon() {
