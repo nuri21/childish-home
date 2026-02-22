@@ -237,12 +237,12 @@ export default function App() {
                     매너만 지켜준다면 <strong>모두 친구입니다</strong>.
                   </RoundBubble>
                 </div>
-                <ProfileCircle size={76} src="/img/profile-01.png" />
+                <ProfileCircle size={76} src="/img/profile-04.png" />
               </div>
 
               {/* 말풍선 2 */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
-                <ProfileCircle size={76} src="/img/profile-02.png" />
+                <ProfileCircle size={76} src="/img/profile-05.png" />
                 <div style={{ flex: 1 }}>
                   <RoundBubble color="#d8f0ec" shadow="#a0c8c0">
                     게임하다가 막히고 잘 모르신다구요?<br />
@@ -259,7 +259,7 @@ export default function App() {
                     중요한 업무로 장기간 비접속에 두려워하지마세요!
                   </RoundBubble>
                 </div>
-                <ProfileCircle size={76} src="/img/profile-03.png" />
+                <ProfileCircle size={76} src="/img/profile-06.png" />
               </div>
 
               {/* 파란 메모 윈도우 + 캐릭터 */}
