@@ -18,7 +18,6 @@ export default function Gallery() {
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-        <span style={{ fontSize: 11, color: '#7b6ab0', fontFamily: "'Paperozi', sans-serif" }}>📸 {IMGS.length}장</span>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 6 }}>
         {IMGS.map(img => (
