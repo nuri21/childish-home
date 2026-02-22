@@ -308,7 +308,9 @@ export default function App() {
         </div>
 
         {/* ━━━━ 진입 안내 ━━━━ */}
-        <div className="content-section">
+      <div className="content-section" style={{ position: 'relative' }}>
+          {/* 캐릭터가 창 밖으로 나가야 하니까 감싸는 div에 position: relative를 줌 */}
+          
           <Window type="yellow-border" title="" showResize className="content-window">
             <div style={{ padding: '16px 14px 8px', fontFamily: "'Paperozi', sans-serif", color: '#3a2a5a' }}>
               <p style={{ fontSize: 13, fontWeight: 700, color: '#3a2a5a', marginBottom: 8 }}>지인플 터치 안해요🥰</p>
@@ -324,6 +326,23 @@ export default function App() {
               <button className="btn-ok">OK</button>
             </div>
           </Window>
+
+          {/* 🌟 창 오른쪽 아래에 배치될 캐릭터 이미지 1개 🌟 */}
+          <div style={{
+            position: 'absolute',
+            bottom: '-15px',   /* 창 아래로 살짝 삐져나오게 */
+            right: '-10px',    /* 창 오른쪽으로 살짝 삐져나오게 */
+            zIndex: 10,
+            pointerEvents: 'none' /* 캐릭터 때문에 버튼 안눌리는거 방지 */
+          }}>
+            <img 
+              src="/img/char-03.png"  /* 👈 여기에 새로 추가할 캐릭터 파일명 쓰세요! */
+              alt="캐릭터3"
+              style={{ 
+                width: '150px',      /* 캐릭터 크기 조절 */
+              }} 
+            />
+          </div>
         </div>
 
         {/* ━━━━ 갤러리 ━━━━ */}
@@ -364,7 +383,13 @@ export default function App() {
                   <p style={{ fontSize: 12, fontWeight: 700, color: '#3a2a5a', fontFamily: "'Paperozi', sans-serif" }}>
                     <span style={{ marginRight: 3 }}>👑</span>평운
                   </p>
-                  <button className="btn-ok" style={{ fontSize: 10, padding: '4px 14px', marginTop: 4 }}>OK</button>
+                  <button 
+                    className="btn-ok" 
+                    style={{ fontSize: 10, padding: '4px 14px', marginTop: 4, cursor: 'pointer' }}
+                    onClick={() => window.open('https://open.kakao.com/o/gJAf6PZh', '_blank')}
+                  >
+                    문의
+                  </button>
                 </div>
               </div>
             </Window>
